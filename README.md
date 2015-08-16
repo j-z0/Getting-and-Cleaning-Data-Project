@@ -2,5 +2,5 @@
 Coursera Data Science Track
 
 To read the tidydata.txt:
-  data <- read.table(file_path, header = TRUE) 
+  data <- read.table(file_path, header = TRUE)
   View(data)
