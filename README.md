@@ -11,6 +11,7 @@ Before you run the run_analysis.R code:
 	Save the UCI HAR Dataset in your working directory.
 
 What the run_analysis.R code do:
+
 	- Loads in all the relevant data (test + train)
 	
 	- Merges all the different parts of the data set back together
