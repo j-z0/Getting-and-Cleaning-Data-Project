@@ -20,7 +20,7 @@ What the run_analysis.R code do:
 	
 	- Subsets only the columns with information on "mean" and "std"
 	
-	- Gives descriptive names to activity, using from activity_labels.txt
+	- Gives descriptive names to activity, using information from activity_labels.txt
 	
 	- Tidies up variable names by removing parentheses and hyphens, detailed definition will be provided in codebook
 	
