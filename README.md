@@ -66,10 +66,10 @@ Tidies up variable names by removing parentheses and hyphens:
 	
 	no.paran<-gsub("\\(|\\)","",names(mean.std.subset))
 	final.colnames<-gsub("\\-"," ",no.paran)
+	names(mean.std.subset)<-final.colnames
 	
 Generates a second data frame with mean of each variable factored by subject and activity:
 
-	names(mean.std.subset)<-final.colnames
 	mean.by.group<-mean.std.subset %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 	
 Saves the last data frame as "tidydata.txt":
