@@ -14,11 +14,10 @@ Get the data by download it:
 	}
 	download.file(url, file.path(path, zip))
 
-Before you run the run_analysis.R code:
-
-Save the UCI HAR Dataset in your working directory.
+Before you run the run_analysis.R code: Save the UCI HAR Dataset in your working directory.
 
 Loads in all the relevant data (test + train):
+
 	#Test data
 	sub.test<-read.table("./UCI HAR Dataset/test/subject_test.txt")
 	x.test<-read.table("./UCI HAR Dataset/test/x_test.txt")
