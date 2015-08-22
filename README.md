@@ -42,7 +42,7 @@ Insert the descriptive variable names from "feature.txt":
 	feat<-read.table("./UCI HAR Dataset/features.txt")
 	colnames(com)<-c("Subject","Activity",as.character(feat$V2))
 	
-Find which column has a name with regular express "mean" or "std", then subset those columns:
+Find which column has a name with regular expression "mean" or "std", then subset those columns:
 
 	col.mean.std<-grep("[Mm][Ee][Aa][Nn]|[Ss][Tt][Dd]",colnames(com))
 	mean.std<-com[,(col.mean.std)]
@@ -62,16 +62,16 @@ Assign descriptive names to activities in new variable "Activity":
 	detach(mean.std.subset)
 	mean.std.subset<-select(mean.std.subset,-(Act))
 	
+Tidies up variable names by removing parentheses and hyphens:
+	
+	no.paran<-gsub("\\(|\\)","",names(mean.std.subset))
+	final.colnames<-gsub("\\-"," ",no.paran)
+	
+Generates a second data frame with mean of each variable factored by subject and activity:
 
+	names(mean.std.subset)<-final.colnames
+	mean.by.group<-mean.std.subset %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
+	
+Saves the last data frame as "tidydata.txt":
 
-	- Inserts the descriptive column names, using information from features.txt
-	
-	- Subsets only the columns with information on "mean" and "std"
-	
-	- Gives descriptive names to activity, using information from activity_labels.txt
-	
-	- Tidies up variable names by removing parentheses and hyphens, detailed definition will be provided in codebook
-	
-	- Generates a second data frame with mean of each variable factored by subject and activity 
-	
-	- Saves the last data frame as "tidydata.txt"
+	write.table(mean.by.group, file="tidydata.txt",row.names=FALSE)
